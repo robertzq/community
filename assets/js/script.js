@@ -1,7 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     var USEOSM = false; // use unlimited OSM maps (in case carto maps runs above limits)
-
+    var LeafIcon = L.Icon.extend({
+        options: {
+            shadowUrl: '/assets/images/leaflet-icons/leaf-shadow.png',
+            iconSize:     [38, 95],
+            shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [-3, -76]
+        }
+    });
+//'localhost:4000/assets/images/leaflet-icons/leaf-red.png'
+    var helenIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-green.png'}),
+    robertIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-red.png'}),
+    usIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-orange.png'});
 
     // generate markers
     if (directory.length > 0) {
@@ -70,9 +83,31 @@ document.addEventListener("DOMContentLoaded", function () {
             popup.userID = directory[i].id;
 
             // init marker
-            var marker = L.marker([directory[i].latitude, directory[i].longitude], {
-                alt: directory[i].name
-            }).bindPopup(popup);
+            var marker;
+            
+            if (directory[i].iconType  === 'robertIcon') {
+                
+                marker = L.marker([directory[i].latitude, directory[i].longitude], {
+                    alt: directory[i].name,
+                    icon: robertIcon
+                }).bindPopup(popup);
+            } else if (directory[i].iconType  === 'helenIcon') {
+                marker = L.marker([directory[i].latitude, directory[i].longitude], {
+                    alt: directory[i].name,
+                    icon: helenIcon
+                }).bindPopup(popup);
+            } else if (directory[i].iconType  === 'usIcon') {
+                marker = L.marker([directory[i].latitude, directory[i].longitude], {
+                    alt: directory[i].name,
+                    icon: usIcon
+                }).bindPopup(popup);
+            } else {
+                marker = L.marker([directory[i].latitude, directory[i].longitude], {
+                    alt: directory[i].name,
+                    icon: usIcon
+                }).bindPopup(popup);
+            }
+             
 
             // add user ID
             // this helps us to determine markers
@@ -98,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // use custom marker icons
-    L.Icon.Default.prototype.options.iconUrl = '../../../images/leaflet-icons/marker-icon.png';
-    L.Icon.Default.prototype.options.iconRetinaUrl = '../../../images/leaflet-icons/marker-icon-2x.png';
+    //L.Icon.Default.prototype.options.iconUrl = '../../../images/leaflet-icons/marker-icon.png';
+   // L.Icon.Default.prototype.options.iconRetinaUrl = '../../../images/leaflet-icons/marker-icon-2x.png';
 
     // generate map
     var map = L.map('map', {

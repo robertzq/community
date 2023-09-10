@@ -10,7 +10,7 @@ layout: compress
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    <title>Dog Bear Footprint</title>
    
 
     <!-- styles -->
@@ -57,7 +57,7 @@ layout: compress
             "@context": "http://schema.org",
             "@type": "WebSite",
             "name": "{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}",
-            "publisher": "Friends Of REDAXO",
+            "publisher": "Robert",
             "url": "{{ page.url | absolute_url }}",
             "description": "{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}",
             "image": "{{ '/icons/redaxo-community.png' | absolute_url }}"
@@ -88,7 +88,7 @@ layout: compress
         {% assign index = parts | size | minus: 2 %}
         {% assign idRaw = parts[index] %}
         {% assign id = idRaw | slugify | jsonify %}
-
+        {% assign iconType = entry.iconType | strip_html | truncate: 100 | escape_once | jsonify%}
         <!-- name -->
         {% assign name = entry.name | strip_html | truncate: 100 | escape_once | jsonify %}
 
@@ -153,6 +153,7 @@ layout: compress
         {
             'id': {{ id }},
             'name': {{ name }},
+            'iconType': {{ iconType }},
             'latitude': {{ latitude }},
             'longitude': {{ longitude }},
             'bio': {{ bio }},

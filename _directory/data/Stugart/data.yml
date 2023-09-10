@@ -20,6 +20,8 @@ bio: ""
 # should be square and about 200-300 px size!
 image: johndoe.jpg
 
+iconType: usIcon
+
 # links
 # one or more links to your website, your github profile, twitter, facebook et al.
 # 4 links, tops!
