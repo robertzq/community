@@ -306,6 +306,7 @@ abbr[title] {
 
 .leaflet-popup-content {
   margin: 13px 13px 3px 13px;
+  width: 400px !important;
 }
 
 .leaflet-popup-content p {
@@ -329,8 +330,8 @@ abbr[title] {
 
 .user__image-src {
   display: block;
-  max-width: 100px;
-  max-height: 200px;
+  max-width: 500px;
+  max-height: 500px;
   border-radius: 8px;
   margin-bottom: 10px;
 }

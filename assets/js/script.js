@@ -14,7 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
 //'localhost:4000/assets/images/leaflet-icons/leaf-red.png'
     var helenIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-green.png'}),
     robertIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-red.png'}),
-    usIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-orange.png'});
+    usIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/ergourm.png'});
+    neuIcon = L.icon({
+        iconUrl: '/assets/images/leaflet-icons/neu.png',
+      
+        iconSize:     [38, 38], // size of the icon
+        shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [22, 20], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+
 
     // generate markers
     if (directory.length > 0) {
@@ -75,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // init popup
             var popup = L.popup({
-                maxWidth: 450
+                maxWidth: 500
             }).setContent(content);
 
             // add user ID
@@ -101,10 +112,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     alt: directory[i].name,
                     icon: usIcon
                 }).bindPopup(popup);
+            } else if (directory[i].iconType  === 'neuIcon'){
+                marker = L.marker([directory[i].latitude, directory[i].longitude], {
+                    alt: directory[i].name,
+                    icon: neuIcon
+                }).bindPopup(popup);
             } else {
                 marker = L.marker([directory[i].latitude, directory[i].longitude], {
                     alt: directory[i].name,
-                    icon: usIcon
+                    icon: helenIcon
                 }).bindPopup(popup);
             }
              

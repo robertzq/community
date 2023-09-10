@@ -2,13 +2,13 @@
 # name (required)
 # may be your real name or your nick; not your company name.
 # teams: feel free to add multiple entries for each of your members!
-name: Lasvegas
+name: Dubai
 
 # geo location (required)
 # provide your favored level of detail by number of digits (like 50.107811 vs 50.11)
 # you may use services like openstreetmap.org to find out your geo location
-latitude: 36.17395612066712
-longitude: -115.16582533471166
+latitude: 25.20249173718694
+longitude: 55.253626222105176
 
 # bio
 # describe yourself, your involvement in the project and the community or whatever is relevant for you.
@@ -18,8 +18,9 @@ bio: ""
 # image or gravatar
 # provide image file from current folder (like 'johndoe.jpg') or gravatar url (generated via https://3v4l.org/OXG7H)
 # should be square and about 200-300 px size!
-image: johndoe.jpg
+image: Dubai.jpg
 iconType: helenIcon
+
 # links
 # one or more links to your website, your github profile, twitter, facebook et al.
 # 4 links, tops!
