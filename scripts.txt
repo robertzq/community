@@ -1,2 +1,4 @@
 docker build -t jekyll-site .
 docker run -p 4000:4000 jekyll-site
+docker save -o jekyll-site.tar jekyll-site:latest
+docker load -i jekyll-site.tar
