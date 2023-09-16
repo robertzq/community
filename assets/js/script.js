@@ -174,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
         zoomSnap: 0.2
     });
 
-    map.setView([31.2304, 121.4737], 10);
     // save reference to markers
     // this makes it easier for us to determine marker layers
     map.markers = markers;
@@ -188,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // this helps us to hold back actions triggered by events
     map.ready = true;
 
+    map.setView([31.2304, 121.4737], 10);
     // handle info popover
     var popover = document.getElementById('popover');
     var popoverOpen = document.getElementById('popover-open');
