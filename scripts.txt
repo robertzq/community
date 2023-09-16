@@ -1,4 +1,4 @@
 docker build -t jekyll-site .
-docker run -p 4000:4000 jekyll-site
+docker run -p 4000:4000 -v "D:\worldmaps\git_community\my_city:/usr/src/app/_directory" jekyll-site
 docker save -o jekyll-site.tar jekyll-site:latest
 docker load -i jekyll-site.tar

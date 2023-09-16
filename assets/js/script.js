@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             popupAnchor:  [-3, -76]
         }
     });
-//'localhost:4000/assets/images/leaflet-icons/leaf-red.png'
+
     var helenIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-green.png'}),
     robertIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/leaf-red.png'}),
     usIcon = new LeafIcon({iconUrl: '/assets/images/leaflet-icons/ergourm.png'});
@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
 
-
+    var normalmgaode = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 5
+    });
 
     // generate markers
     if (directory.length > 0) {
@@ -140,22 +143,31 @@ document.addEventListener("DOMContentLoaded", function () {
         var mapAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
         var mapUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var tiles = L.tileLayer(mapUrl, {attribution: mapAttribution});
+        // L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+        //     maxZoom: 18,
+        //     minZoom: 5
+        // });
     }
     else {
         // Carto maps (limited to 75.000 requests)
         var mapAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>';
         var mapUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/{style}/{z}/{x}/{y}@2x.png';
         var tiles = L.tileLayer(mapUrl, {style: 'rastertiles/voyager_labels_under', attribution: mapAttribution});
+        // L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+        //     maxZoom: 18,
+        //     minZoom: 5
+        // });
     }
 
     // use custom marker icons
     //L.Icon.Default.prototype.options.iconUrl = '../../../images/leaflet-icons/marker-icon.png';
    // L.Icon.Default.prototype.options.iconRetinaUrl = '../../../images/leaflet-icons/marker-icon-2x.png';
-
+   var normal = L.layerGroup([tiles,normalmgaode,markers]);
     // generate map
     var map = L.map('map', {
-        layers: [tiles, markers],
+        layers: [normal],
         minZoom: 2,
+        maxZoom:18,
         preferCanvas: true,
         maxBounds: [[82, -200], [-70, 200]], // fit world, provide extra space to left and right (lng 200 instead of 180)
         maxBoundsViscosity: 1.0, // don’t drag map outside the bounds
