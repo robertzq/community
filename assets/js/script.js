@@ -174,6 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
         zoomSnap: 0.2
     });
 
+    map.setView([31.2304, 121.4737], 10);
     // save reference to markers
     // this makes it easier for us to determine marker layers
     map.markers = markers;

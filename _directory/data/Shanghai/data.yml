@@ -7,8 +7,8 @@ name: Shanghai
 # geo location (required)
 # provide your favored level of detail by number of digits (like 50.107811 vs 50.11)
 # you may use services like openstreetmap.org to find out your geo location
-latitude: 31.181688076925028
-longitude: 121.23004176395514
+latitude: 31.182131688394012
+longitude: 121.22827613382772
 
 # bio
 # describe yourself, your involvement in the project and the community or whatever is relevant for you.
